@@ -26,7 +26,7 @@ class ProjectController {
 
   async update ({ params, request }) {
     const data = request.only(['title'])
-    const project = request.team
+    const project = await request.team
       .projects()
       .where('id', params.id)
       .first()
@@ -39,7 +39,7 @@ class ProjectController {
   }
 
   async destroy ({ params, request }) {
-    const project = request.team
+    const project = await request.team
       .projects()
       .where('id', params.id)
       .first()
